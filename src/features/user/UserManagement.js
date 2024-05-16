@@ -7,6 +7,7 @@ import { getUniqueID } from '../../components/common/HelperMethods';
 const UserManagement = () => {
     const dispatch = useDispatch();
     const users = useSelector((state) => state.users.users);
+    const isLoading = useSelector((state) => state.users.status === 'loading');
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [currentUser, setCurrentUser] = useState(null);
     const [page, setPage] = useState(1);
@@ -109,6 +110,7 @@ const UserManagement = () => {
                     }
                 }}
                 scroll={{ x: 'max-content', y: 400 }}
+                loading={isLoading}
             />
             <Modal
                 title={currentUser ? "Edit User" : "Add User"}
